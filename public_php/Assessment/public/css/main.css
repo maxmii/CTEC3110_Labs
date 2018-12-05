@@ -23,19 +23,14 @@ body
 /***********************************************/
 a:link
 {
-    color: #041EDE;
-    background-color: transparent;
+    color: #000000;
 }
 a:hover
 {
-    color: #FF00FF;
+    color: #0000FF;
     background-color: transparent;
 }
-a:visited
-{
-    color: #FE482A;
-    background-color: transparent;
-}
+
 /***********************************************/
 /* division styles                             */
 /***********************************************/
@@ -75,9 +70,8 @@ a:visited
 }
 .curr_page
 {
-    color: red;
+
     font-weight: bolder;
-    border: 1px solid red;
 }
 .result
 {
