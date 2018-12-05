@@ -1,16 +1,6 @@
 <?php
 /**
- * storesessiondetails.php
- *
- * calculate the result
- *
- * produces a result according to the user entered values and calculation type
- *
- * Author: CF Ingrams
- * Email: <clinton@cfing.co.uk>
- * Date: 22/10/2015
- *
- * @author CF Ingrams <clinton@cfing.co.uk>
+ Store details of login
  */
 
 use Slim\Http\Request;
