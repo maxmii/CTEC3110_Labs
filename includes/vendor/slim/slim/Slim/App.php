@@ -32,11 +32,11 @@ use Slim\Interfaces\RouteInterface;
 use Slim\Interfaces\RouterInterface;
 
 /**
- * App
+ * app
  *
  * This is the primary class with which you instantiate,
  * configure, and run a Slim Framework application.
- * The \Slim\App class also accepts Slim Framework middleware.
+ * The \Slim\app class also accepts Slim Framework middleware.
  *
  * @property-read callable $errorHandler
  * @property-read callable $phpErrorHandler
@@ -107,7 +107,7 @@ class App
     }
 
     /**
-     * Calling a non-existant method on App checks to see if there's an item
+     * Calling a non-existant method on app checks to see if there's an item
      * in the container that is callable and if so, calls it.
      *
      * @param  string $method

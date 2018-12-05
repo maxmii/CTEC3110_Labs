@@ -35,7 +35,7 @@ interface RouteGroupInterface
     public function add($callable);
 
     /**
-     * Execute route group callable in the context of the Slim App
+     * Execute route group callable in the context of the Slim app
      *
      * This method invokes the route group object's callable, collecting
      * nested route objects

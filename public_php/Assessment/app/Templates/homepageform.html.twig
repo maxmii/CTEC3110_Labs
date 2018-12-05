@@ -1,0 +1,14 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Homepage{% endblock %}
+{% block content %}
+    <h2>Simple Arithmetic</h2>
+    <h3>Enter values and select calculation type</h3>
+    <form action="index.php/homepage" method="post">
+        <label for="val1">Value 1: </label><input id="val1" type="text" name="value1" size="10">
+        <label for="val2">Value 2: </label><input id="val2" type="text" name="value2" size="10">
+        <br><br>
+        <hr>
+        <input type="submit" value="Enter">
+        <input type="reset" value="Clear">
+    </form>
+{% endblock %}
