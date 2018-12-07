@@ -1,0 +1,28 @@
+{% extends 'banner.html.twig' %}
+{% block content %}
+    <div id="lg-form-container">
+        <h2>{{ page_heading_2 }}</h2>
+        <p>{{ page_text }}</p>
+        <p>Word entered was <b>{{ word_entered }}</b></p>
+
+        <h2>Definitions:</h2>
+
+        {% if defn_count <= 0 %}
+            {{ no_definition }}
+
+        {% else %}
+            {% set counter = 0 %}
+            {% for definition in definitions %}
+                {% set counter = counter + 1 %}
+                <fieldset>
+                    <legend>Definition {{ counter }} of {{ defn_count }}: </legend>
+                    <p>Dictionary ID: {{ definition.dictionary_id }}</p>
+                    <p>Dictionary name: {{ definition.dictionary_name }}</p>
+                    <p>Definition: {{ definition.word_definition }}</p>
+                </fieldset>
+            {% endfor %}
+        {% endif %}
+
+        <p class="curr_page"><a href="{{ landing_page }}">Another word</a></p>
+    </div>
+{% endblock %}

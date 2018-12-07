@@ -1,0 +1,30 @@
+{% extends 'banner.html.twig' %}
+{% block content %}
+    <div id="page-content-div">
+        <h2>{{ page_heading_2 }}</h2>
+        <p>{{ page_text }}</p>
+        <form action="{{ action }}" method={{ method }}>
+            <fieldset>
+                <legend>Temperature Conversion</legend>
+                <br>
+                <label for="conversion_type">Select the required conversion:</label>
+                <select id="conversion_type" name="conversion_type" required>
+                    {% for unit, name in temp_units%}
+                        <option value = "{{ unit }}">{{ name }}</option>
+                    {% endfor %}
+                </select>
+                <br><br>
+                <label for="temperature">Enter a temperature:</label>
+                <input id="temperature" name="temperature" type="text" value="{{ initial_input_box_value }}" size="10" maxlength="50">
+                <br><br>
+                <label for="windspeed">Enter a windspeed if relevant:</label>
+                <input id="windspeed" name="windspeed" type="text" value="{{ initial_input_box_value }}" size="10" maxlength="50">
+                <br><br>
+                <h3>{{ page_heading_3 }}</h3>
+                <br><br>
+                <input type="submit" value="Convert the temperature >>>">
+            </fieldset>
+        </form>
+        <p class="curr_page"><a href="{{ landing_page }}">Home</a></p>
+    </div>
+{% endblock %}
