@@ -7,3 +7,5 @@
  */
 
 require 'routes/Loginpage.php';
+require 'routes/storelogindetails.php';
+require 'routes/displaylogindetails.php';

@@ -14,7 +14,7 @@ define('DIRSEP', DIRECTORY_SEPARATOR);
 
 $url_root = $css_path = $_SERVER['SCRIPT_NAME'];
 $url_root = implode('/', explode('/', $url_root, -1));
-$css_path = $url_root . '/css/sessions.css';
+$css_path = $url_root . '/css/main.css';
 define('CSS_PATH', $css_path);
 
 $settings = [
