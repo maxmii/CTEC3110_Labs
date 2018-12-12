@@ -3,10 +3,13 @@
  * Login Model
  */
 
-class LoginModel
+class AssessmentModel
 {
+    // Private for username
     private $c_username;
+    //Private for server type
     private $c_server_type;
+    // private for the password
     private $c_password;
     private $c_arr_storage_result;
     private $c_obj_wrapper_session_file;
@@ -99,4 +102,23 @@ class LoginModel
 
         return $m_store_result;
     }
+
+    /**This Will create the soap client allowing us to use it*/
+//    private function createSoapClient()
+//    {
+//        $obj_soap_client_handle = false;
+//        $wsdl = WSDL;
+//        $arr_soapclient = ['trace' => true, 'exceptions' => true];
+//
+//        try
+//        {
+//        $obj_soap_client_handle = new SoapClient($wsdl, $arr_soapclient);
+//        }
+//        catch (SoapFault, $obj_exception)
+//        {
+//            trigger_error($obj_exception);
+//        }
+//
+//        return $obj_soap_client_handle;
+//    }
 }

@@ -12,6 +12,7 @@ $app->get('/', function(Request $request, Response $response)
     return $this->view->render($response,
         'homepageform.html.twig',
         [
+            'title' => 'Login Page',
             'css_path' => CSS_PATH,
             'action' => 'index.php/storesessiondetails',
             'initial_input_box_value' => null,

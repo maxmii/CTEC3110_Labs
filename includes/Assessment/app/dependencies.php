@@ -29,8 +29,8 @@ $container['session_validator'] = function ($container) {
 
 $container['session_model'] = function ($container) {
     $class_path = $container->get('settings')['class_path'];
-    require $class_path . 'LoginModel.php';
-    $model = new LoginModel();
+    require $class_path . 'AssessmentModel.php';
+    $model = new AssessmentModel();
     return $model;
 };
 

@@ -1,7 +1,7 @@
 {% extends'layout.html.twig' %}
+{% block title %}{{ title }}{% endblock %}
 {% block content %}
     <div id="page-content-div">
-        <title>{{ page_title }}</title>
         <h2>{{ page_heading_2 }}</h2>
         <h4>{{ sid_text }}{{ sid }}</h4>
         <form action="{{ action }}" method="post">
