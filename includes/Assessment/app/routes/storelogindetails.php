@@ -6,7 +6,7 @@
 use Slim\Http\Request;
 use Slim\Http\Response;
 $app->post(
-    '/storesessiondetails',
+    '/storelogindetails',
     function(Request $request, Response $response) use ($app)
     {
         $arr_tainted_params = $request->getParsedBody();
