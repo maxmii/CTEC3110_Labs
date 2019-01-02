@@ -5,9 +5,8 @@
 
 use Slim\Http\Request;
 use Slim\Http\Response;
-
 $app->post(
-    '/storesessiondetails',
+    '/storelogindetails',
     function(Request $request, Response $response) use ($app)
     {
         $arr_tainted_params = $request->getParsedBody();
@@ -41,7 +40,7 @@ $app->post(
 
         $arr_storage_result_message = '';
         return $this->view->render($response,
-            'display_storage_result.html.twig',
+            'display_login_result.html.twig',
             [
                 'landing_page' => $_SERVER["SCRIPT_NAME"],
                 'action' => 'index.php/displaysessiondetails',
@@ -59,3 +58,4 @@ $app->post(
             ]);
 
     });
+
