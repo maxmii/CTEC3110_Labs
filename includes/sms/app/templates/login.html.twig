@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>dashboard</title>
+        <!--    bootstrap3 css-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <!--    jquery 3.3-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!--    bootstrap3 js-->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div class="container">
+<!--            placeholder-->
+            <div class="row" style="height: 128px"></div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Login</div>
+                        <div class="panel-body">
+                            <form id="user_info">
+                                <div class="form-group">
+                                    <label for="login_username">Username</label>
+                                    <input type="text" class="form-control" id="login_username" placeholder="Username">
+                                </div>
+                                <div class="form-group">
+                                    <label for="login_pwd">Password</label>
+                                    <input type="password" class="form-control" id="login_pwd" placeholder="Password">
+                                </div>
+                                <div class="form-group">
+                                    <div id="login_result_success" class="hidden alert alert-success"></div>
+                                    <div id="login_result_fail" class="hidden alert alert-danger"></div>
+                                </div>
+                                <input type="button" class="btn btn-primary" title="login" value="Login" onclick="login()">
+                                <input type="button" class="btn btn-default" title="register" value="Register" onclick="register()">
+                                <script type="text/javascript">
+                                    function login() {
+                                        $("#login_result_success").addClass("hidden");
+                                        $("#login_result_fail").addClass("hidden");
+
+                                        username = $("#login_username").val();
+                                        pwd = $("#login_pwd").val();
+
+                                        $.ajax({
+                                            url: '{{ base_url }}/api/login',
+                                            method: 'post',
+                                            data: JSON.stringify({
+                                                "username": username,
+                                                "pwd" : pwd
+                                            }),
+                                            success: function(data) {
+                                                if (data.sc === 200) {
+                                                    // login success
+                                                    $("#login_result_success").html(data.msg);
+                                                    $("#login_result_success").removeClass("hidden");
+
+                                                    setTimeout(redirect2homepage, 1000);
+                                                } else if (data.sc === 301) {
+                                                    // login fail
+                                                    $("#login_result_fail").html(data.msg);
+                                                    $("#login_result_fail").removeClass("hidden");
+                                                }
+                                            },
+                                            error : function (req, status, error) {
+                                                console.error(req);
+                                                console.error(status);
+                                                console.error(error);
+                                                $("#login_result_fail").html(error);
+                                                $("#login_result_fail").removeClass("hidden");
+                                            }
+                                        });
+                                    }
+
+                                    function register() {
+                                        $("#login_result_success").addClass("hidden");
+                                        $("#login_result_fail").addClass("hidden");
+
+                                        username = $("#login_username").val();
+                                        pwd = $("#login_pwd").val();
+
+                                        $.ajax({
+                                            url: '{{ base_url }}/api/register',
+                                            method: 'post',
+                                            data: JSON.stringify({
+                                                "username": username,
+                                                "pwd": pwd
+                                            }),
+                                            success: function(data) {
+                                                if (data.sc === 200) {
+                                                    // register success
+                                                    $("#login_result_success").html(data.msg);
+                                                    $("#login_result_success").removeClass("hidden");
+
+                                                    setTimeout(redirect2homepage, 500);
+                                                } else if (data.sc === 302) {
+                                                    // register fail
+                                                    $("#login_result_fail").html(data.msg);
+                                                    $("#login_result_fail").removeClass("hidden");
+                                                }
+                                            },
+                                            error: function(req, status, error) {
+                                                console.error(req);
+                                                console.error(status);
+                                                console.error(error);
+                                                $("#login_result_fail").html(error);
+                                                $("#login_result_fail").removeClass("hidden");
+
+                                            }
+                                        });
+                                    }
+
+                                    function redirect2homepage() {
+                                        console.log('redirect');
+                                        window.location = "{{ base_url }}/";
+                                    }
+                                </script>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+        </div>
+    </body>
+</html>
