@@ -1,6 +1,5 @@
 <?php
 
-//the autoload.php is need from the vendor folder to load
 require 'vendor/autoload.php';
 
 session_start();

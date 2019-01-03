@@ -33,8 +33,8 @@ return [
         // settings
         'soap' => [
             'wsdl' => 'https://m2mconnect.ee.co.uk/orange-soap/services/MessageServiceByCountry?wsdl',
-            'usr' => '1816226044',
-            'pwd' => 'Zzh19960413',
+            'usr' => '18maxmorris',
+            'pwd' => 'Budd3r1c2310',
         ],
 
         // sms prefix

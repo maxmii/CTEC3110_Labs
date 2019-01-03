@@ -21,7 +21,7 @@ $app->get('/api/sms/refresh', function (Request $request, Response $response, ar
             $smsModel->add(SMS::parse($smsXml));
         }
         $isRefresh = count($smsArray) > 0 ? true : $isRefresh;
-//    } while(count($smsArray) > 0);
+ //   } while(count($smsArray) > 0);
     } while(false);
     $resp = array(
         'sc' => 200,
