@@ -1,6 +1,6 @@
 <?php
 
-require 'vendor/autoload.php';
+require 'D:\wamp\www\phpappfolder\includes\vendor\autoload.php';
 
 session_start();
 

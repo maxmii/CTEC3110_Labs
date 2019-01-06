@@ -25,7 +25,7 @@ $app->add(function (Request $request, Response $response, $next) {
     if(!in_array($request->getRequestTarget(), $public_url) && empty($_SESSION['username'])) {
         return $response->withJson([
             'sc' => 500,
-            'msg' => 'You have not enough privilege to visit this page!',
+            'msg' => 'You do not have enough privileges to visit this page!',
         ]);
     }
 

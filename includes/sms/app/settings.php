@@ -34,7 +34,7 @@ return [
         'soap' => [
             'wsdl' => 'https://m2mconnect.ee.co.uk/orange-soap/services/MessageServiceByCountry?wsdl',
             'usr' => '18maxmorris',
-            'pwd' => 'Budd3r1c2310',
+            'pwd' => 'Budd3r1ck2310',
         ],
 
         // sms prefix

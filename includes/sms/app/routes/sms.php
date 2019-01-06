@@ -14,7 +14,9 @@ $app->get('/api/sms/refresh', function (Request $request, Response $response, ar
     $isRefresh = false;
     $smsArray = [];
     do {
-        $smsArray = $this->soap->peekMessages($this->soap_usr, $this->soap_pwd, 10);
+        $smsArray = $this->soap->peekMessages
+        ($this->soap_usr, $this->soap_pwd, 100);
+        //count of sms collected per click in this case would be 100 counts
 
         $smsModel = new SMSModel($this->db);
         foreach ($smsArray as $smsXml) {

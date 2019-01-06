@@ -15,11 +15,11 @@ class SMSModel
         $result = $result->fetch();
         return (int)$result['cnt'];
     }
-
     function getList($page, $size, $prefix = '')
     {
         $offset = $page * $size;
         $limit = $size;
+
 
         $sql = "SELECT * FROM sms_db.sms " . (empty($prefix) ? "" : "WHERE message LIKE '%{$prefix}%'") . " LIMIT {$limit} OFFSET {$offset}";
 
@@ -34,7 +34,13 @@ class SMSModel
 
     function add(SMS $sms)
     {
-        return $this->db->exec("INSERT INTO sms_db.sms (src_msisdn, dest_msisdn, recv_time, message)
-          VALUES ('{$sms->source_msisdn}', '{$sms->destination_msisdn}', '{$sms->received_time}', '{$sms->message}') ;");
+        $stmt = $this->db->prepare("INSERT INTO sms.sms (src_msisdn, dest_msisdn, recv_time, message) VALUES (:src_msisdn, :dest_msisdn, :recv_time, :message) ;");
+        $stmt->bindParam(':src_msisdn', $sms->source_msisdn);
+        $stmt->bindParam(':dest_msisdn', $sms->destination_msisdn);
+        $stmt->bindParam(':recv_time', $sms->received_time);
+        $stmt->bindParam(':message', $sms->message);
+        return $stmt->execute();
+
+
     }
 }
