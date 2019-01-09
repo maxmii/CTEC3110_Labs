@@ -3,16 +3,16 @@
 
 class UserModel
 {
-    private $db;
-    function __construct($db)
+    private $dbase;
+    function __construct($dbase)
     {
-        $this->db = $db;
+        $this->dbase = $dbase;
     }
 
     function register($username, $pwdMD5)
     {
         try {
-            $execResult = $this->db->exec("
+            $execResult = $this->dbase->exec("
                 INSERT INTO sms_db.t_user (username, pwd_md5) VALUES ('{$username}', '{$pwdMD5}');
             ");
         } catch (\PDOException $e) {
@@ -28,7 +28,7 @@ class UserModel
 
     function login($username, $pwdMD5)
     {
-        $rs = $this->db->query("
+        $rs = $this->dbase->query("
             SELECT pwd_md5 as pwd FROM sms_db.t_user WHERE username = '{$username}'
         ");
 

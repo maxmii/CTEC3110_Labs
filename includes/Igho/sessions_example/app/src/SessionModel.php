@@ -1,6 +1,6 @@
 <?php
 /**
- * SessionModel.php
+ * LoginModel.php
  *
  * stores the validated values in the relevant storage location
  *

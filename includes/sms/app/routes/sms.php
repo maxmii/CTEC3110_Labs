@@ -14,14 +14,15 @@ $app->get('/api/sms/refresh', function (Request $request, Response $response, ar
     $isRefresh = false;
     $smsArray = [];
     do {
-        $smsArray = $this->soap->peekMessages($this->soap_usr, $this->soap_pwd, 10);
+        //update this single sentence
+        $smsArray = $this->soap->peekMessages($this->soap_usr, $this->soap_pwd, 100);
 
         $smsModel = new SMSModel($this->db);
         foreach ($smsArray as $smsXml) {
             $smsModel->add(SMS::parse($smsXml));
         }
         $isRefresh = count($smsArray) > 0 ? true : $isRefresh;
-//    } while(count($smsArray) > 0);
+ //   } while(count($smsArray) > 0);
     } while(false);
     $resp = array(
         'sc' => 200,
@@ -57,8 +58,7 @@ $app->get('/api/sms/list/self/{page}/{size}/{keyword}', function (Request $reque
     return $response->withJson($resp);
 });
 
-/*
-app->post('/api/sms/send', function (Request $request, Response $response, array $args) {
+$app->post('/api/sms/send', function (Request $request, Response $response, array $args) {
     $sms = json_decode($request->getBody());
 
     $msg = $this->soap->sendMessage($this->soap_usr, $this->soap_pwd, $sms->dest, false, "");
@@ -68,4 +68,3 @@ app->post('/api/sms/send', function (Request $request, Response $response, array
         'msg' => $msg
     ]);
 });
-*/

@@ -1,8 +1,7 @@
 <?php
 
 /**
-	* SessionWrapper.php
-	*
+	* LoginWrapper.php*
 	* create a wrapper for the SESSION global array
 	*
 	* Author: CF Ingrams
