@@ -9,14 +9,20 @@ use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
 
-// sms api
+
+/**
+ * SMS api
+ * sms array will store the messages from the EE M2M
+ * by using the peek message function meaning the messages won't be cleared
+ * count of sms collected per click in this case would be 100 counts
+ */
 $app->get('/api/sms/refresh', function (Request $request, Response $response, array $args) {
     $isRefresh = false;
     $smsArray = [];
     do {
         $smsArray = $this->soap->peekMessages
         ($this->soap_usr, $this->soap_pwd, 100);
-        //count of sms collected per click in this case would be 100 counts
+
 
         $smsModel = new SMSModel($this->db);
         foreach ($smsArray as $smsXml) {

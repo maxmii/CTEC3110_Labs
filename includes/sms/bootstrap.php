@@ -1,5 +1,5 @@
 <?php
-
+//Connects to the autoload.php in the vendor directory
 require 'D:\wamp\www\phpappfolder\includes\vendor\autoload.php';
 
 session_start();

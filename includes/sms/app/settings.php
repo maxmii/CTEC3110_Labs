@@ -6,6 +6,9 @@ return [
         'displayErrorDetails' => true, // set to false in production
         'addContentLengthHeader' => false, // Allow the web server to send the content-length header
 
+        /**
+         * Views based on the html.twigs in the templates directory
+         */
         'view' => [
             'template_path' => __DIR__ . '/templates/',
             'twig' => [
@@ -21,7 +24,9 @@ return [
             'level' => \Monolog\Logger::DEBUG,
         ],
 
-        // database settings
+        /**
+         * Connects to the MYSQL database
+         */
         'database' => [
             'host' => 'localhost',
             'port' => '3306',
@@ -29,15 +34,19 @@ return [
             'username' => 'root',
             'password' => '',
         ],
-
-        // settings
+        /**
+         * Connects to the EE M2M server with the username and password
+         * that were given
+         */
         'soap' => [
             'wsdl' => 'https://m2mconnect.ee.co.uk/orange-soap/services/MessageServiceByCountry?wsdl',
             'usr' => '18maxmorris',
             'pwd' => 'Budd3r1ck2310',
         ],
 
-        // sms prefix
+        /**
+         * sms prefix for our group
+         */
         'group_prefix' => '[18-3310-AL]',
     ],
 ];

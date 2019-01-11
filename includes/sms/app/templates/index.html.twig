@@ -116,7 +116,7 @@
                                 url: refresh_sms_url, // first page and 100 rows per page
                                 success : function (data) {
                                     if(data.sc !== 200) {
-                                        alert("Get sms list error");
+                                        alert("Get SMS Error");
                                     } else {
                                         data.data.forEach(function (item, index) {
                                             if(isJSON(item.message)) {
@@ -146,7 +146,8 @@
                                     console.error(req);
                                     console.error(status);
                                     console.error(error);
-                                    alert("Get sms list error");
+                                    alert("No Messages Found");
+                                    //Display error message if filter doesn't show any messages
                                 }
                             });
                         }

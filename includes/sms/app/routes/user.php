@@ -14,8 +14,11 @@ $app->get('/', function (Request $request, Response $response, array $args) {
     $args['username'] = empty($_SESSION['username']) ? '' : $_SESSION['username'];
 
     $args['base_url'] = '/sms/index.php';
-
+    /**
+     * Returns the the page based on the Index layout
+     */
     return $this->view->render($response, 'index.html.twig', $args);
+
 });
 
 $app->get('/login', function (Request $request, Response $response, array $args) {
@@ -32,6 +35,11 @@ $app->post('/api/login', function (Request $request, Response $response, array $
 
     $loginResult = $userModel->login($userInfo->username, md5($userInfo->pwd));
 
+    /**
+     * If the result for the login is unsuccessful will return message saying
+     * either the username or password is incorrect
+     * if the username and password is correct will login into client
+     */
     if($loginResult === false) {
         return $response->withJson([
             'sc' => 301,
@@ -45,7 +53,9 @@ $app->post('/api/login', function (Request $request, Response $response, array $
         ]);
     }
 });
-
+/**
+ *Clicking this button will trigger the logout
+ */
 $app->get('/api/logout', function(Request $request, Response $response, array $args) {
     unset($_SESSION['username']);
 
@@ -61,7 +71,9 @@ $app->post('/api/register', function (Request $request, Response $response, arra
     $userInfo->username = trim($userInfo->username);
     $userInfo->pwd = trim($userInfo->pwd);
 
-    // check params
+    /**
+     * Checks the parameters Username and password if both or either blank display message
+     */
     if (empty($userInfo->username) || empty($userInfo->username)) {
         return $response->withJson([
             'sc' => 302,

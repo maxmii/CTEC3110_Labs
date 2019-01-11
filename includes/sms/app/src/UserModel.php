@@ -10,6 +10,11 @@ class UserModel
     }
 
     function register($username, $pwdMD5)
+        /**
+         * This will create a a new user with a username and password
+         * allowing them to login into the client
+         * If the user already exists it will display a message
+         */
     {
         try {
             $execResult = $this->db->exec("
